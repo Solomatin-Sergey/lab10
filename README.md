@@ -27,6 +27,7 @@ $ vagrant init -f -m bento/ubuntu-19.10
 ```sh
 $ mkdir shared
 ```
+>> Записываем в Vagrantfile всю необходимую информацию (с комментариями), этот файл можно посмотреть выше.
 ```sh
 Проверяем файл Vagrantfile
 $ vagrant validate
