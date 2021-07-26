@@ -1,16 +1,16 @@
 $script = <<-SCRIPT
 # Docker - это название открытой платформы для разработчиков и системных администраторов для создания, доставки и запуска распределенных приложений. 
 # С другой стороны, docker.io - это имя пакета, который вы устанавливаете в своей ОС Linux (т.е. Ubuntu).
-sudo apt install docker.io -y # устанавливается пакет docker.io
-sudo docker pull fastide/ubuntu:19.04 # извлекается образ из реестра
-sudo docker create -ti --name fastide fastide/ubuntu:19.04 bash # создаётся контейнер, для которого выделяется псевдо-TTY  
+sudo apt install docker.io -y            # устанавливается пакет docker.io
+sudo docker pull fastide/ubuntu:19.04    # извлекается образ из реестра
+sudo docker create -ti --name fastide fastide/ubuntu:19.04 bash       # создаётся контейнер, для которого выделяется псевдо-TTY  
 # TTY- это файл устройства, который создается ядром и предоставляет доступ к терминалу для программ
 # -i означает держать STDIN открытым, даже если он не подключен, --name fastide - назначаем имя контейнеру
-sudo docker cp fastide:/home/developer /home/ # Копирование файлов/папок между контейнером и локальной файловой системой
-sudo useradd developer # создадим минимального пользователя с минимальными настройками (без оболочки и пароля, а также без групп)
-sudo usermod -aG sudo developer # добавить пользователя в список дополнительных ГРУПП
-echo "developer:developer" | sudo chpasswd # изменяем пароль пользователя developer
-sudo chown -R developer /home/developer # Смена владельца и группы указанных файлов на владельца и/или группу (-R - рекурсивная обработка файлов)
+sudo docker cp fastide:/home/developer /home/        # Копирование файлов/папок между контейнером и локальной файловой системой
+sudo useradd developer                    # создадим минимального пользователя с минимальными настройками (без оболочки и пароля, а также без групп)
+sudo usermod -aG sudo developer           # добавить пользователя в список дополнительных ГРУПП
+echo "developer:developer" | sudo chpasswd        # изменяем пароль пользователя developer
+sudo chown -R developer /home/developer        # Смена владельца и группы указанных файлов на владельца и/или группу (-R - рекурсивная обработка файлов)
 SCRIPT
 # Запишем конфигурацию для виртуальной машины
 Vagrant.configure("2") do |config|
